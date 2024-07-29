@@ -1,0 +1,63 @@
+
+.footer {
+  padding: 73px 0 63px 0;
+  background-color: #c0707c;
+}
+
+.footer .container {
+  position: relative;
+
+}
+
+.right {
+  font-size: 12px;
+  font-family: GilroyRegular, sans-serif;
+  color: rgb(227, 172, 180);
+  padding-top: 19px;
+  position: absolute;
+  left: 105px;
+  bottom: -8px;
+}
+
+.number {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.instagram {
+  text-align: center;
+  text-decoration: none;
+}
+
+.our {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 1229px) {
+.right {
+  padding-left: 20px;
+}
+}
+
+@media screen and (max-width: 768px) {
+
+  .footer .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+  }
+
+  .right {
+    position: static;
+    order: 4;
+  }
+}
