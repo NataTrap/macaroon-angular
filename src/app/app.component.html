@@ -42,7 +42,7 @@
       </ul>
     </nav>
     <a href="tel:+3753689868" class="number" *ngIf="showNumber">
-      +375 (29) 368-98-68
+     {{phoneNumber | changeFormatOfNumber}}
     </a>
   </div>
 </header>
@@ -59,7 +59,7 @@
         Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
       </div>
       <div class="action">
-        <button class="button" (click)="scrollTo(choose)">
+        <button buttonBackground class="button" (click)="scrollTo(choose)">
           Выбрать макарун
         </button>
       </div>
@@ -94,14 +94,7 @@
 
 <section class="priority">
   <div class="container">
-    <div class="priority-item" *ngFor="let priority of priorities">
-      <div class="back">
-        <span class="priority-image">{{priority.number}}</span>
-      </div>
-      <div class="priority-title">{{priority.title}}</div>
-      <div class="priority-text">{{priority.description}}
-      </div>
-    </div>
+<priority *ngFor="let priority of priorities" [priority]="priority"></priority>
   </div>
 </section>
 
@@ -112,26 +105,8 @@
   </div>
   <div class="container">
     <div class="items">
-      <div class="item" *ngFor="let item of items">
-        <div class="item-image">
-          <img src="assets/images/{{item.image}}" alt="macaroon" class="zoom-img">
-        </div>
-        <div class="item-title">{{item.title}}</div>
-        <div class="info">
-          <div class="item-quantity">
-          {{item.info.quantity}}
-            <div class="item-price">
-           {{item.info.price}}
-            </div>
-          </div>
+    <item *ngFor="let item of items" [item]="item" (addToCartEvent)="addToCart($event, form)"></item>
 
-          <div class="item-action">
-            <button class="item-button" (click)="addToCart(item, form)">
-              Заказать
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
@@ -154,7 +129,7 @@
         Ваш выбор
       </div>
       <div class="write">
-        <input type="text" placeholder="Напишите, что хотите заказать..." [(ngModel)]="formValues.itemTitle">
+        <input type="text" placeholder="Напишите, что хотите заказать..." [(ngModel)]="formValues.itemTitle" >
       </div>
       <div class="form-choose-two">
         Заполните данные для заказа
@@ -163,8 +138,8 @@
         <input type="text" placeholder="Ваше имя" [(ngModel)]="formValues.customerName">
         <input type="text" placeholder="+375 (__) ___ - __ - __" [(ngModel)]="formValues.phone">
       </div>
-      <div class="action">
-        <button class="button button-form">
+      <div class="action" >
+        <button buttonBackground class="button button-form">
           Оформить заказ
         </button>
       </div>
@@ -179,12 +154,17 @@
 
 
 <div class="present" *ngIf="showPresent">
+
+
   <div class="present-image">
+    <div class="count">
+      <div class="count-number">{{cartService.count}}</div>
+    </div>
     <div class="present-text-wrap">
       <div class="present-text">
         Оформите заказ и получите подарок!
       </div>
     </div>
-    <img src="assets/images/present.png" alt="present">
+    <img src="assets/images/cart.png" alt="present">
   </div>
 </div>

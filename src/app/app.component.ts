@@ -1,19 +1,31 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PriorityType} from "./type/priority.type";
 import {ItemsType} from "./type/items.type";
+import {ProductService} from "./services/product.service";
+import {CartService} from "./services/cart.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [ProductService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   public menu(target: HTMLElement): void {
     target.classList.add('open')
   }
   public close(target: HTMLElement): void {
     target.classList.remove('open')
   }
+
+  constructor(private productService: ProductService, public cartService: CartService) {
+
+  }
+
+  public phoneNumber: string = '375293689868'
+
+
 
 
   public priorities: PriorityType[] = [
@@ -39,45 +51,17 @@ export class AppComponent {
     }
   ]
 
-  public items: ItemsType[] = [
-    {
-      image: '1-macaroon.png',
-      title: 'Макарун с малиной',
-      info: {
-        quantity: '1 шт.',
-        price: '1,70 руб.'
-      }
-    },
-    {
-      image: '4.png',
-      title: 'Макарун с манго',
-      info: {
-        quantity: '1 шт.',
-        price: '1,70 руб.'
-      }
-    },
-    {
-      image: '5.png',
-      title: 'Пирог с ванилью',
-      info: {
-        quantity: '1 шт.',
-        price: '1,70 руб.'
-      }
-    },
-    {
-      image: '7.png',
-      title: ' Пирог с фисташками',
-      info: {
-        quantity: '1 шт.',
-        price: '1,70 руб.'
-      }
-    },
-  ]
+  public items: ItemsType[] = []
 
   public formValues = {
     itemTitle: '',
     customerName: '',
     phone: ''
+  }
+
+
+  ngOnInit() {
+    this.items = this.productService.getProducts()
   }
 
   public scrollTo(target: HTMLElement): void {
@@ -87,10 +71,13 @@ export class AppComponent {
   public addToCart(item: ItemsType, target: HTMLElement): void {
     this.scrollTo(target)
     this.formValues.itemTitle = item.title.toUpperCase()
+    this.cartService.count++
+    alert(this.formValues.itemTitle)
+
   }
 
-  showPresent: boolean = false
-  showNumber: boolean = false
+  showPresent: boolean = true
+  showNumber: boolean = true
 
 
 

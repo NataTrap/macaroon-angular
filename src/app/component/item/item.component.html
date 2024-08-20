@@ -1,0 +1,20 @@
+<div class="item" >
+  <div class="item-image">
+    <img src="assets/images/{{item.image}}" alt="macaroon" class="zoom-img">
+  </div>
+  <div class="item-title">{{item.title}}</div>
+  <div class="info">
+    <div class="item-quantity">
+      {{item.info.quantity}}
+      <div class="item-price">
+        {{item.info.price | currency : 'RUB' :  'руб.' :'1.2-2' : 'ru'}}
+      </div>
+    </div>
+    <div class="item-action">
+      <button buttonBackground class="item-button" (click)="addItemToCart()">
+        Заказать
+      </button>
+    </div>
+  </div>
+</div>
+<!--(click)="addToCart(item, form)"-->
