@@ -96,6 +96,9 @@
   }
 }
 
+.action{
+  width: 300px;
+}
 
 
 .action .button {
@@ -230,13 +233,17 @@
   padding: 25px 0 22px 0;
 }
 
+.write{
+  width: 300px;
+}
+
 .write input {
   border: 1px solid #9b3f50;
   border-radius: 30px;
-  width: 249px;
+  //width: 249px;
   display: flex;
   flex-direction: column;
-  //width: 100%;
+  width: 100%;
   padding: 22px 26px 24px 26px;
   background-color: transparent;
   font-size: 15px;
@@ -251,9 +258,9 @@
   width: 100%;
 }
 
-.button-form {
-  width: 100%;
-}
+//.button-form {
+//  width: 100%;
+//}
 
 .strawberry-top {
   position: absolute;

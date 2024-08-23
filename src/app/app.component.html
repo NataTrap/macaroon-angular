@@ -139,7 +139,7 @@
         <input type="text" placeholder="+375 (__) ___ - __ - __" [(ngModel)]="formValues.phone">
       </div>
       <div class="action" >
-        <button buttonBackground class="button button-form">
+        <button buttonBackground class="button button-form" style="width: 100%">
           Оформить заказ
         </button>
       </div>
@@ -155,14 +155,13 @@
 
 <div class="present" *ngIf="showPresent">
 
-
   <div class="present-image">
     <div class="count">
       <div class="count-number">{{cartService.count}}</div>
     </div>
     <div class="present-text-wrap">
-      <div class="present-text">
-        Оформите заказ и получите подарок!
+      <div class="present-text" >
+      {{cartService.cost | currency : 'RUB' :  'руб.' :'1.2-2' : 'ru'}}
       </div>
     </div>
     <img src="assets/images/cart.png" alt="present">

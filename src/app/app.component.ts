@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
     this.scrollTo(target)
     this.formValues.itemTitle = item.title.toUpperCase()
     this.cartService.count++
-    alert(this.formValues.itemTitle)
+    // alert(this.formValues.itemTitle)
 
   }
 
